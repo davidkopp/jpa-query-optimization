@@ -21,23 +21,19 @@ public class QueryTests {
 
     @BeforeEach
     public void setUp() {
-        
         em.getTransaction().begin();
 
         for (int i = 0; i < NUMBER_OF_DEPARTMENTS; i++) {
             Department dept = new Department();
             dept.setName("Department " + i);
             
-            em.persist(dept);
-            em.flush();
-            em.refresh(dept);
-
             for (int j = 0; j < NUMBER_OF_EMPLOYEES_PER_DEPARTMENT; j++) {
                 Employee emp = new Employee();
-                emp.setName("Employee " + i + j);
+                emp.setName("Employee " + i + "_" + j);
                 emp.setDepartment(dept);
-                em.persist(emp);
+                dept.getEmployees().add(emp);
             }
+            em.persist(dept);
         }
 
         em.getTransaction().commit();
