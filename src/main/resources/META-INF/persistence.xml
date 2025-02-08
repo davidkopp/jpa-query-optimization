@@ -14,8 +14,6 @@
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.generate_statistics" value="true" />
 			<property name="hibernate.max_fetch_depth" value="3" />
-			<property name="hibernate.jdbc.batch_size" value="10" />
-			<property name="hibernate.jdbc.default_batch_fetch_size" value="10" />
 		</properties>
 	</persistence-unit>
 </persistence>
