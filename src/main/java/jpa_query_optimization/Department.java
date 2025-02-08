@@ -1,4 +1,5 @@
 package jpa_query_optimization;
+
 import java.util.List;
 import java.util.ArrayList;
 
