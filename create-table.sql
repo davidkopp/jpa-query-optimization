@@ -1,3 +1,4 @@
+CREATE DATABASE testdb;
 USE testdb;
 
 DROP TABLE IF EXISTS Employee;

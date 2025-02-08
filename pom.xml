@@ -3,17 +3,11 @@
   <groupId>JPA-Query-Optimization</groupId>
   <artifactId>JPA-Query-Optimization</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
   <build>
-    <sourceDirectory>src/main/java</sourceDirectory>
-    <testSourceDirectory>src/test/java</testSourceDirectory>
-    <resources>
-      <resource>
-        <directory>src</directory>
-        <excludes>
-          <exclude>**/*.java</exclude>
-        </excludes>
-      </resource>
-    </resources>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -38,12 +32,6 @@
    </plugins>
   </build>
   <dependencies>
-    <!-- Hibernate JPA Provider -->
-    <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-core</artifactId>
-        <version>6.4.1.Final</version>
-    </dependency>
     <dependency>
         <groupId>org.hibernate.orm</groupId>
         <artifactId>hibernate-core</artifactId>
@@ -54,30 +42,18 @@
         <artifactId>jakarta.transaction-api</artifactId>
         <version>2.0.1</version>
     </dependency>
-    <!-- MySQL JDBC Treiber -->
     <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-        <version>8.0.33</version> 
+        <groupId>com.mysql</groupId>
+        <artifactId>mysql-connector-j</artifactId>
+        <version>8.4.0</version> 
     </dependency>
+
     <dependency>
-      <groupId>org.javassist</groupId>
-      <artifactId>javassist</artifactId>
-      <version>3.25.0-GA</version>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>5.11.4</version>
+        <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.2</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate.orm</groupId>
-      <artifactId>hibernate-testing</artifactId>
-      <version>6.4.1.Final</version>
-      <scope>test</scope>
-    </dependency>
-    <!-- H2 Database for Testing -->
     <dependency>
         <groupId>com.h2database</groupId>
         <artifactId>h2</artifactId>
@@ -88,6 +64,7 @@
         <groupId>com.mickaelb</groupId>
         <artifactId>hibernate-query-asserts</artifactId>
         <version>2.1.0</version>
+        <scope>test</scope>
     </dependency>
   </dependencies>
   

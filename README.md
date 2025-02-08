@@ -8,19 +8,25 @@ To check the number of SQL statements, the library [Hibernate SQL Query Assertio
 Run MySQL with Docker:
 
 ```sh
-docker run --name mysql-jpa-query-optimization -e MYSQL_ROOT_PASSWORD=secret -p 3306:3306 -d mysql:8.2
+docker run --name mysql-jpa-query-optimization -e MYSQL_ROOT_PASSWORD=secret -p 3306:3306 -d mysql:8.4
 ```
 
 Execute `createtable.sql`:
 
 ```sh
-docker exec -i mysql-jpa-query-optimization mysql -uroot -psecret < createtable.sql
+docker exec -i mysql-jpa-query-optimization mysql -uroot -psecret < create-table.sql
 ```
 
 Compile:
 
 ```sh
 mvn package
+```
+
+Execute tests:
+
+```sh
+mvn test
 ```
 
 Run:
