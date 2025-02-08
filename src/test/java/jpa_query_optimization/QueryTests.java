@@ -72,26 +72,40 @@ public class QueryTests {
         }
     }
 
+    /*
+     * N+1 query problem
+     * 3 select statements expected
+     */
     @Test
-    @AssertHibernateSQLCount(selects = 2)
-    public void testSelectQuery() {
+    @AssertHibernateSQLCount(selects = 3)
+    public void numberOfQueries_queryProblem() {
         em.getTransaction().begin();
 
-        // Execute the JPQL query
         List<Department> departments = em
                 .createQuery("SELECT d FROM Department d", Department.class)
                 .getResultList();
 
+        for (Department department : departments) {
+            System.out.println("Department: " + department.getName());
+            for (Employee employee : department.getEmployees()) {
+                System.out.println("  Employee: " + employee.getName());
+            }
+        }
+
         em.getTransaction().commit();
     }
 
+    /*
+     * Using JOIN FETCH only one select statement is expected
+     */
     @Test
     @AssertHibernateSQLCount(selects = 1)
-    public void testSelectWithFetchJoin() {
+    public void numberOfQueries_queryWithFetchJoin() {
         em.getTransaction().begin();
 
         List<Department> departments = em
-                .createQuery("SELECT d FROM Department d JOIN FETCH d.employees", Department.class).getResultList();
+                .createQuery("SELECT d FROM Department d JOIN FETCH d.employees", Department.class)
+                .getResultList();
 
         for (Department department : departments) {
             System.out.println("Department: " + department.getName());
